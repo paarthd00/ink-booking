@@ -14,7 +14,23 @@
 
     <body>
 
+        <header>
+            <a href="/login">
+                Login
+            </a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/register">
+                Register
+            </a>
+
+        </header>
         <main class="mt-6">
+
+
             <h2 class="text-xl">Artists</h2>
             <form action="/checkout" method="POST">
                 @csrf
