@@ -18,6 +18,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/cart', function () {
+    return view('cart');
+})->middleware(['auth', 'verified'])->name('cart');
+
 Route::get('/bookings', function () {
     return view('bookings.all');
 })->middleware(['auth', 'verified'])->name('bookings');
