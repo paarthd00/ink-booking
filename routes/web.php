@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\Artist;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +20,12 @@ Route::get('/dashboard', function () {
 Route::get('/add-artist', function () {
     return view('add-artist');
 })->middleware(['auth', 'verified'])->name('add-artist');
+
+
+
+Route::get('/artists', [Artist::class, 'index'])->name('artists');
+Route::post('/add-artist', [Artist::class, 'addArtist'])->name('addArtist');
+
 
 
 
