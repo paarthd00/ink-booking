@@ -10,7 +10,7 @@ class Artist extends Controller
     public function index()
     {
         $artists = \App\Models\Artist::all();
-        return view('artists', compact('artists'));
+        return view('artist.all', compact('artists'));
     }
 
     public function addArtist(Request $request)

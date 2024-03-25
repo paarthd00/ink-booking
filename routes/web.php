@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\Artist;
+use App\Http\Controllers\Art;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,17 +18,23 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/bookings', function () {
+    return view('bookings.all');
+})->middleware(['auth', 'verified'])->name('bookings');
+
 Route::get('/add-artist', function () {
-    return view('add-artist');
-})->middleware(['auth', 'verified'])->name('add-artist');
-
-
+    return view('artist.add');
+})->middleware(['auth', 'verified'])->name('artist.add');
 
 Route::get('/artists', [Artist::class, 'index'])->name('artists');
 Route::post('/add-artist', [Artist::class, 'addArtist'])->name('addArtist');
 
+Route::get('/add-art', function () {
+    return view('art.add');
+})->middleware(['auth', 'verified'])->name('art.add');
 
-
+Route::get('/all-art', [Art::class, 'index'])->name('all-art');
+Route::post('/add-art', [Art::class, 'addArt'])->name('addArt');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

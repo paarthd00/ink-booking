@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Art extends Model
+class ArtItem extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'name',
         'description',
         'image',
-        'price',
-        'artist_id',
+        'price'
     ];
 
 }
