@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\Artist;
 use App\Http\Controllers\Art;
+use App\Http\Controllers\UploadController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,6 +15,11 @@ Route::get('/', function () {
 Route::post('/checkout', [StripeController::class, 'checkout'])->name('checkout');
 Route::get('/success', [StripeController::class, 'success'])->name('success');
 Route::get('/cancel', [StripeController::class, 'cancel'])->name('cancel');
+
+Route::get('/upload', [UploadController::class, 'index']);
+
+Route::post('/upload', [UploadController::class, 'create']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
