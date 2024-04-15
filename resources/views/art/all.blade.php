@@ -10,7 +10,9 @@
                 <!-- loop over artist -->
                 @foreach($arts as $art)
                 <div class="card p-6">
-                    <img class="text-white" src="{{ asset('storage/'.$art->image) }}" alt="{{ $art->name }}">
+                    <img
+                    width="200"
+                    class="text-white" src="{{ asset('storage/'.$art->image) }}" alt="{{ $art->name }}">
                     <div class="card-body">
                         <h2 class="text-white">{{ $art->name }}</h2>
                         <p class="text-white">{{ $art->price }}</p>

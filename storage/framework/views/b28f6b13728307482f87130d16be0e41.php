@@ -20,7 +20,9 @@
                 <!-- loop over artist -->
                 <?php $__currentLoopData = $arts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $art): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="card p-6">
-                    <img class="text-white" src="<?php echo e(asset('storage/'.$art->image)); ?>" alt="<?php echo e($art->name); ?>">
+                    <img
+                    width="200"
+                    class="text-white" src="<?php echo e(asset('storage/'.$art->image)); ?>" alt="<?php echo e($art->name); ?>">
                     <div class="card-body">
                         <h2 class="text-white"><?php echo e($art->name); ?></h2>
                         <p class="text-white"><?php echo e($art->price); ?></p>

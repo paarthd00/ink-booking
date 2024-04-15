@@ -10,8 +10,15 @@ class UploadController extends Controller
 {
     public function index()
     {
-        
+
         return view('uploads', ['uploads' => Upload::all()]);
+    }
+
+    public function show($id)
+    {
+        $upload = Upload::find($id);
+
+        return view('upload', ['upload' => $upload]);
     }
 
 
@@ -22,9 +29,9 @@ class UploadController extends Controller
     //
     //
 
-    public function create(Request $request)
+    public static function create(Request $request)
     {
-        $file = $request->file('uploaded_file');
+        $file = $request->file('image');
         $filename = $file->getClientOriginalName();
 
         $path = Storage::disk('public')->put('images', $file);
@@ -33,6 +40,6 @@ class UploadController extends Controller
 
         $f->save();
 
+        return $f;
     }
-
 }
