@@ -19,6 +19,32 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="<?php echo e(asset('storage/'. $item->image)); ?>" alt="image" class="w-20 h-20 object-cover rounded-lg">
+                            <div class="ml-4">
+                                <h2 class="text-lg font-semibold"><?php echo e($item->name); ?></h2>
+                                <p class="text-sm text-gray-500"><?php echo e($item->description); ?></p>
+                            </div>
+                        </div>
+                        <div class="flex items
+                        -center">
+                            <p class="text-lg font-semibold"><?php echo e($item->price); ?></p>
+                            <form action="/cart/<?php echo e($item->id); ?>" method="POST">
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('DELETE'); ?>
+                                <button type="submit" class="ml-4 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-600">
+                                    Remove
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
                     <form action="/checkout" method="POST">
                         <?php echo csrf_field(); ?>
                         <button type="submit" class="block w-full px-6 py-3 mt-6 text-center text-white bg-[#FF2D20] rounded-lg shadow-[0px 4px 34px rgba(0,0,0,0.06)] transition hover:bg-[#FF2D20] dark:bg-[#FF2D20] dark:hover:bg-[#FF2D20]">
@@ -38,4 +64,4 @@
 <?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
-<?php endif; ?><?php /**PATH /var/www/html/resources/views/cart.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH /var/www/html/resources/views/cart/all.blade.php ENDPATH**/ ?>

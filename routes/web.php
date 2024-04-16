@@ -6,11 +6,14 @@ use App\Http\Controllers\StripeController;
 use App\Http\Controllers\Artist;
 use App\Http\Controllers\Art;
 use App\Http\Controllers\UploadController;
-
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::post('/addtocart', [CartController::class, 'addToCart'])->name('addtocart');
 
 Route::post('/checkout', [StripeController::class, 'checkout'])->name('checkout');
 // Route::post('/addtocart', [])
@@ -26,9 +29,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/cart', function () {
-    return view('cart');
-})->middleware(['auth', 'verified'])->name('cart');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+
 
 Route::get('/bookings', function () {
     return view('bookings.all');
@@ -54,4 +57,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

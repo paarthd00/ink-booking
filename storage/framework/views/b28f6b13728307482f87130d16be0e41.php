@@ -24,13 +24,13 @@
                     <div class="card-body">
                         <h2 class="text-white"><?php echo e($art->name); ?></h2>
                         <p class="text-white"><?php echo e($art->price); ?></p>
-                        <form action="/checkout" method="POST">
+                        <form action="/addtocart" method="POST">
                             <?php echo csrf_field(); ?>
-                            <input type="hidden" name="art_id" value="<?php echo e($art->id); ?>">
-                            <input type="hidden" name="price" value="<?php echo e($art->price); ?>">
-                            <input type="hidden" name="name" value="<?php echo e($art->name); ?>">
+                            <input type="hidden" name="art_items_id" value="<?php echo e($art->id); ?>">
+                            <input type="hidden" name="user_id" value="<?php echo e(Auth::user()->id); ?>">
+                            <input type="hidden" name="quantity" value="1">
                             <button type="submit" class="block w-full px-6 py-3 mt-6 text-center text-white bg-[#FF2D20] rounded-lg shadow-[0px 4px 34px rgba(0,0,0,0.06)] transition hover:bg-[#FF2D20] dark:bg-[#FF2D20] dark:hover:bg-[#FF2D20]">
-                                Add To Cart
+                                Add to cart
                             </button>
                         </form>
                     </div>
