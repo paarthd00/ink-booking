@@ -11,18 +11,17 @@ class StripeController extends Controller
         return view('index');
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
-
         $session = \Stripe\Checkout\Session::create([
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'usd',
                     'product_data' => [
-                        'name' => 'T-shirt',
+                        'name' => $request->name,
                     ],
-                    'unit_amount' => 2000,
+                    'unit_amount' => $request->price * 100,
                 ],
                 'quantity' => 1,
             ]],
@@ -37,5 +36,10 @@ class StripeController extends Controller
     public function success()
     {
         return view('success');
+    }
+
+    public function cancel()
+    {
+        return view('index');
     }
 }

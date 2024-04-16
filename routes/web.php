@@ -13,6 +13,7 @@ Route::get('/', function () {
 });
 
 Route::post('/checkout', [StripeController::class, 'checkout'])->name('checkout');
+// Route::post('/addtocart', [])
 Route::get('/success', [StripeController::class, 'success'])->name('success');
 Route::get('/cancel', [StripeController::class, 'cancel'])->name('cancel');
 
