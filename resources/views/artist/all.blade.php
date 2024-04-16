@@ -10,14 +10,12 @@
                 <!-- loop over artist -->
                 @foreach($artists as $artist)
                 <div class="card p-6">
-                    <img class="text-white" src="{{ asset('storage/'.$artist->image) }}" alt="{{ $artist->name }}">
+                    <img width="200" class="text-white" src="{{ asset('storage/'.$artist->image) }}" alt="{{ $artist->name }}">
                     <div class="card-body">
                         <h2 class="text-white">{{ $artist->name }}</h2>
                         <p class="text-white">{{ $artist->bio }}</p>
                         <p class="text-white">{{ $artist->price }}</p>
-                        <a class="text-white" href="mailto:{{ $artist->email }}">{{ $artist->email }}</a>
-                        <br>
-                        <a class="text-white" href="tel:{{ $artist->phone }}">{{ $artist->phone }}</a>
+                        <a class="text-white" href="mailto:{{ $artist->email }}">Message</a>
                     </div>
                 </div>
                 @endforeach
@@ -25,8 +23,3 @@
         </div>
     </div>
 </x-app-layout>
-
-
-
-
-

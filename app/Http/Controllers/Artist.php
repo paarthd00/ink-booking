@@ -10,6 +10,11 @@ class Artist extends Controller
     public function index()
     {
         $artists = \App\Models\Artist::all();
+
+        foreach ($artists as $artist) {
+            $artist->image = \App\Models\Upload::find($artist->image)->path;
+        }
+
         return view('artist.all', compact('artists'));
     }
 
@@ -24,16 +29,18 @@ class Artist extends Controller
             'image' => 'required',
         ]);
 
+
+        $upload_data = UploadController::create($request);
+
         $artist = new \App\Models\Artist();
         $artist->name = $request->name;
         $artist->email = $request->email;
         $artist->phone = $request->phone;
         $artist->price = $request->price;
         $artist->bio = $request->bio;
-        $artist->image = $request->image;
+        $artist->image = $upload_data->id;
         $artist->save();
 
         return redirect()->route('artists');
     }
-
 }

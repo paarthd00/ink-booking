@@ -20,14 +20,12 @@
                 <!-- loop over artist -->
                 <?php $__currentLoopData = $artists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $artist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="card p-6">
-                    <img class="text-white" src="<?php echo e(asset('storage/'.$artist->image)); ?>" alt="<?php echo e($artist->name); ?>">
+                    <img width="200" class="text-white" src="<?php echo e(asset('storage/'.$artist->image)); ?>" alt="<?php echo e($artist->name); ?>">
                     <div class="card-body">
                         <h2 class="text-white"><?php echo e($artist->name); ?></h2>
                         <p class="text-white"><?php echo e($artist->bio); ?></p>
                         <p class="text-white"><?php echo e($artist->price); ?></p>
-                        <a class="text-white" href="mailto:<?php echo e($artist->email); ?>"><?php echo e($artist->email); ?></a>
-                        <br>
-                        <a class="text-white" href="tel:<?php echo e($artist->phone); ?>"><?php echo e($artist->phone); ?></a>
+                        <a class="text-white" href="mailto:<?php echo e($artist->email); ?>">Message</a>
                     </div>
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -43,10 +41,4 @@
 <?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
-<?php endif; ?>
-
-
-
-
-
-<?php /**PATH /var/www/html/resources/views/artist/all.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH /var/www/html/resources/views/artist/all.blade.php ENDPATH**/ ?>

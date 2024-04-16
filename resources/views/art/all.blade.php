@@ -10,17 +10,19 @@
                 <!-- loop over artist -->
                 @foreach($arts as $art)
                 <div class="card p-6">
-                    <img width="200" class="text-white" src="{{ asset('storage/'.$art->image) }}" alt="{{ $art->name }}">
+                    <h2 class="text-white text-xl pb-2">{{ $art->name }}</h2>
+                    <p class="text-white pb-4">{{ $art->description }}</p>
+                    <p class="text-white pb-4">${{ $art->price }}</p>
+
+                    <img class="rounded" width="200" class="text-white" src="{{ asset('storage/'.$art->image) }}" alt="{{ $art->name }}">
                     <div class="card-body">
-                        <h2 class="text-white">{{ $art->name }}</h2>
-                        <p class="text-white">{{ $art->price }}</p>
                         <form action="/addtocart" method="POST">
                             @csrf
                             <input type="hidden" name="art_items_id" value="{{ $art->id }}">
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="block w-full px-6 py-3 mt-6 text-center text-white bg-[#FF2D20] rounded-lg shadow-[0px 4px 34px rgba(0,0,0,0.06)] transition hover:bg-[#FF2D20] dark:bg-[#FF2D20] dark:hover:bg-[#FF2D20]">
-                                Add to cart
+                            <button style="background-color: rgb(17,17,17);" type="submit" class="block w-full px-6 py-3 mt-6 text-center text-white rounded-lg">
+                                Add to Bag
                             </button>
                         </form>
                     </div>

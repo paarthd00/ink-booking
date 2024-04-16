@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h2 class="text-xl">New Artist</h2>
-                    <form action="/add-artist" method="POST">
+                    <form action="/add-artist" method="POST"  enctype="multipart/form-data">
                         @csrf
                         <div class="mt-6">
                             <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>

@@ -20,17 +20,19 @@
                 <!-- loop over artist -->
                 <?php $__currentLoopData = $arts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $art): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="card p-6">
-                    <img width="200" class="text-white" src="<?php echo e(asset('storage/'.$art->image)); ?>" alt="<?php echo e($art->name); ?>">
+                    <h2 class="text-white text-xl pb-2"><?php echo e($art->name); ?></h2>
+                    <p class="text-white pb-4"><?php echo e($art->description); ?></p>
+                    <p class="text-white pb-4">$<?php echo e($art->price); ?></p>
+
+                    <img class="rounded" width="200" class="text-white" src="<?php echo e(asset('storage/'.$art->image)); ?>" alt="<?php echo e($art->name); ?>">
                     <div class="card-body">
-                        <h2 class="text-white"><?php echo e($art->name); ?></h2>
-                        <p class="text-white"><?php echo e($art->price); ?></p>
                         <form action="/addtocart" method="POST">
                             <?php echo csrf_field(); ?>
                             <input type="hidden" name="art_items_id" value="<?php echo e($art->id); ?>">
                             <input type="hidden" name="user_id" value="<?php echo e(Auth::user()->id); ?>">
                             <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="block w-full px-6 py-3 mt-6 text-center text-white bg-[#FF2D20] rounded-lg shadow-[0px 4px 34px rgba(0,0,0,0.06)] transition hover:bg-[#FF2D20] dark:bg-[#FF2D20] dark:hover:bg-[#FF2D20]">
-                                Add to cart
+                            <button style="background-color: rgb(17,17,17);" type="submit" class="block w-full px-6 py-3 mt-6 text-center text-white rounded-lg">
+                                Add to Bag
                             </button>
                         </form>
                     </div>
