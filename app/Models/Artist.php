@@ -17,5 +17,4 @@ class Artist extends Model
         'image',
         'price',
     ];
-
 }

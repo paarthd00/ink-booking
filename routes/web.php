@@ -31,10 +31,6 @@ Route::get('/dashboard', function () {
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
-Route::get('/bookings', function () {
-    return view('bookings.all');
-})->middleware(['auth', 'verified'])->name('bookings');
-
 Route::get('/add-artist', function () {
     return view('artist.add');
 })->middleware(['auth', 'verified'])->name('artist.add');
