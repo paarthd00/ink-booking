@@ -50,7 +50,7 @@ class CartController extends Controller
         }
     }
 
-    public function deleteCart(Request $request)
+    public function removeItem(Request $request)
     {
         $cart = \App\Models\Cart::find($request->id);
         $cart->delete();

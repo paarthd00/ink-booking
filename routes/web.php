@@ -12,26 +12,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/removefromcart', [CartController::class, 'removeItem'])->name('removefromcart');
 
 Route::post('/addtocart', [CartController::class, 'addToCart'])->name('addtocart');
 
 Route::post('/checkout', [StripeController::class, 'checkout'])->name('checkout');
-// Route::post('/addtocart', [])
 Route::get('/success', [StripeController::class, 'success'])->name('success');
 Route::get('/cancel', [StripeController::class, 'cancel'])->name('cancel');
 
 Route::get('/upload', [UploadController::class, 'index']);
-
 Route::post('/upload', [UploadController::class, 'create']);
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
-
 
 Route::get('/bookings', function () {
     return view('bookings.all');
