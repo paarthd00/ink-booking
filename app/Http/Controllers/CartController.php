@@ -12,13 +12,17 @@ class CartController extends Controller
     public function index()
     {
         $carts = Cart::all();
+        $total = 0;
         foreach ($carts as $cart) {
             $art_item = ArtItem::find($cart->art_items_id);
             $cart->price = $art_item->price;
             $cart->image = \App\Models\Upload::find($art_item->image)->path;
+            $cart->name = $art_item->name;
+            $cart->description = $art_item->description;
+            $total += $cart->price * $cart->quantity;
         }
 
-        return view('cart.all', ['items' => $carts]);
+        return view('cart.all', ['items' => $carts, 'total' => $total]);
     }
 
     public function addToCart(Request $request)
@@ -30,12 +34,20 @@ class CartController extends Controller
         ]);
 
         $cart = new \App\Models\Cart();
-        $cart->user_id = $request->user_id;
-        $cart->art_items_id = $request->art_items_id;
-        $cart->quantity = $request->quantity;
-        $cart->save();
-
-        return redirect()->route('cart');
+        // if art item already in cart, update quantity
+        $cart = Cart::where('art_items_id', $request->art_items_id)->first();
+        if ($cart) {
+            $cart->quantity += $request->quantity;
+            $cart->save();
+            return redirect()->route('cart');
+        } else {
+            $cart = new Cart();
+            $cart->user_id = $request->user_id;
+            $cart->art_items_id = $request->art_items_id;
+            $cart->quantity = $request->quantity;
+            $cart->save();
+            return redirect()->route('cart');
+        }
     }
 
     public function deleteCart(Request $request)
