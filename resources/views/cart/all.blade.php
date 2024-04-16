@@ -8,9 +8,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+                <div class="p-6 text-gray-900 dark:text-gray-100 flex flex-col ">
                     @foreach($items as $item)
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between py-2">
                         <div class="flex items-center">
                             <img src="{{ asset('storage/'. $item->image) }}" alt="image" class="w-20 h-20 object-cover rounded-lg">
                             <div class="ml-4">
@@ -30,7 +30,6 @@
                             </form>
                         </div>
                     </div>
-
 
                     @endforeach
 
