@@ -27,17 +27,19 @@
                                 <h2 class="text-lg font-semibold"><?php echo e($item->name); ?></h2>
                                 <p class="text-sm text-gray-500"><?php echo e($item->description); ?></p>
                                 <div class="flex">
-                                    <form action="/cart/increment<?php echo e($item->id); ?>" method="POST">
+                                    <form action="/updatequantity" method="POST">
                                         <?php echo csrf_field(); ?>
-                                        <?php echo method_field('UPDATE'); ?>
+                                        <input type="hidden" name="id" value="<?php echo e($item->id); ?>">
+                                        <input type="hidden" name="change" value="-1">
                                         <button type="submit" class="px-2 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-600">
                                             -
                                         </button>
                                     </form>
                                     <p class="text-lg font-semibold"> <?php echo e($item->quantity); ?></p>
-                                    <form action="/cart/increment<?php echo e($item->id); ?>" method="POST">
+                                    <form action="/updatequantity" method="POST">
                                         <?php echo csrf_field(); ?>
-                                        <?php echo method_field('UPDATE'); ?>
+                                        <input type="hidden" name="id" value="<?php echo e($item->id); ?>">
+                                        <input type="hidden" name="change" value="1">
                                         <button type="submit" class="px-2 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-600">
                                             +
                                         </button>

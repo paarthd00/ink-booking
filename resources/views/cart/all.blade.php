@@ -17,17 +17,19 @@
                                 <h2 class="text-lg font-semibold">{{ $item->name }}</h2>
                                 <p class="text-sm text-gray-500">{{ $item->description }}</p>
                                 <div class="flex">
-                                    <form action="/cart/increment{{ $item->id }}" method="POST">
+                                    <form action="/updatequantity" method="POST">
                                         @csrf
-                                        @method('UPDATE')
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                        <input type="hidden" name="change" value="-1">
                                         <button type="submit" class="px-2 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-600">
                                             -
                                         </button>
                                     </form>
                                     <p class="text-lg font-semibold"> {{ $item->quantity }}</p>
-                                    <form action="/cart/increment{{ $item->id }}" method="POST">
+                                    <form action="/updatequantity" method="POST">
                                         @csrf
-                                        @method('UPDATE')
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                        <input type="hidden" name="change" value="1">
                                         <button type="submit" class="px-2 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-600">
                                             +
                                         </button>

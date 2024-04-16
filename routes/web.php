@@ -14,6 +14,8 @@ Route::get('/', function () {
 
 Route::post('/removefromcart', [CartController::class, 'removeItem'])->name('removefromcart');
 
+Route::post('/updatequantity', [CartController::class, 'updateQuantity'])->name('updatequantity');
+
 Route::post('/addtocart', [CartController::class, 'addToCart'])->name('addtocart');
 
 Route::post('/checkout', [StripeController::class, 'checkout'])->name('checkout');

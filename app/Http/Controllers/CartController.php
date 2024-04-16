@@ -50,6 +50,23 @@ class CartController extends Controller
         }
     }
 
+    public function updateQuantity(Request $request)
+    {
+        $cart = \App\Models\Cart::find($request->id);
+        $value = $request->change;
+
+        $cart->quantity += $value;
+
+        if ($cart->quantity < 1) {
+            $cart->delete();
+            return redirect()->route('cart');
+        }
+
+        $cart->save();
+
+        return redirect()->route('cart');
+    }
+
     public function removeItem(Request $request)
     {
         $cart = \App\Models\Cart::find($request->id);
